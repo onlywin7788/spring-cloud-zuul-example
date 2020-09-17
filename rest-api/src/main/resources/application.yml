@@ -1,0 +1,26 @@
+server:
+  port: 9080
+
+management: # actucator 모든 정보
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  profiles:
+    active: local # default setting
+  messages:
+    basename: i18n/exception
+    encoding: UTF-8
+  jwt:
+    secret: govlepel@$&
+  social:
+    kakao:
+      client_id: a74a957519c8acfe081430256a205c15 # 앱생성시 받은 REST API 키
+      redirect: http://localhost:9080/social/login/kakao
+      url:
+        login: https://kauth.kakao.com/oauth/authorize
+        token: https://kauth.kakao.com/oauth/token
+        profile: https://kapi.kakao.com/v2/user/me
+  url:
+    base: http://localhost:9080
