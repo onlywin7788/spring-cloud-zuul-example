@@ -1,0 +1,13 @@
+server:
+  port: 9301
+spring:
+  application:
+    name: book-store-service
+eureka:
+  client:
+    registryFetchIntervalSeconds: 5
+    enabled: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true

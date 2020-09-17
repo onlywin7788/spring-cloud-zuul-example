@@ -1,0 +1,15 @@
+# bootstrap.yml
+server:
+  port: 8761
+spring:
+  application:
+    name: service-discovery
+  profiles:
+    active: local
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false

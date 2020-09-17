@@ -1,0 +1,22 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: proxy-server
+  profiles:
+    active: dev
+  cloud:
+    config:
+      #uri: http://localhost:9000
+      fail-fast: true
+      discovery:
+        service-id: configuration-server
+        enabled: true
+eureka:
+  client:
+    registryFetchIntervalSeconds: 5
+    enabled: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true

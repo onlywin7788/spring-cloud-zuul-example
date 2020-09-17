@@ -1,0 +1,18 @@
+# member-service bootstrap.yml
+server:
+  port: 9011
+spring:
+  lable : latest
+  profiles:
+    active: test
+  application:
+    name: zenca
+  cloud:
+    config:
+      uri: http://localhost:9001
+      fail-fast: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
