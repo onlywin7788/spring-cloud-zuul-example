@@ -1,8 +1,6 @@
 package com.navana.restapi.controller.advice;
 
-import com.navana.restapi.controller.advice.exception.CAuthenticationEntryPointException;
-import com.navana.restapi.controller.advice.exception.CUserExistException;
-import com.navana.restapi.controller.advice.exception.CUserNotFoundException;
+import com.navana.restapi.controller.advice.exception.*;
 import com.navana.restapi.model.reponse.CommonResult;
 import com.navana.restapi.service.ResponseService;
 import lombok.RequiredArgsConstructor;
@@ -60,5 +58,23 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public CommonResult communicationException(HttpServletRequest request, CUserExistException e) {
         return responseService.getFailResult(Integer.valueOf(getMessage("existingUser.code")), getMessage("existingUser.msg"));
+    }
+
+    @ExceptionHandler(CNotOwnerException.class)
+    @ResponseStatus(HttpStatus.NON_AUTHORITATIVE_INFORMATION)
+    public CommonResult notOwnerException(HttpServletRequest request, CNotOwnerException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("notOwner.code")), getMessage("notOwner.msg"));
+    }
+
+    @ExceptionHandler(CResourceNotExistException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public CommonResult resourceNotExistException(HttpServletRequest request, CResourceNotExistException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("resourceNotExist.code")), getMessage("resourceNotExist.msg"));
+    }
+
+    @ExceptionHandler(CForbiddenWordException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public CommonResult forbiddenWordException(HttpServletRequest request, CForbiddenWordException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("forbiddenWord.code")), getMessage("forbiddenWord.msg", new Object[]{e.getMessage()}));
     }
 }

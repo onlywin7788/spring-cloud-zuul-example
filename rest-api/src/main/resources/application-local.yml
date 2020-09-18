@@ -6,6 +6,9 @@ logging:
 
 spring:
   profiles: local
+#  redis:
+#    host: localhost
+#    port: 7739
   datasource:
     url: jdbc:h2:tcp://localhost/~/test
     driver-class-name: org.h2.Driver
