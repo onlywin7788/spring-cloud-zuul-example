@@ -1,0 +1,12 @@
+server:
+  port: 37080
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
